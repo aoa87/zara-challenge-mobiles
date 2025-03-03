@@ -11,6 +11,7 @@ import ColorOptionsSelector from "./color-options-selector";
 import { MobileColor } from "@/modules/mobiles/domain/mobile-color";
 import MobileSpecs from "./mobile-specs";
 import useCart from "@/shared/useCart";
+import MobileSimilarItems from "./mobile-similar-items";
 
 interface MobileDetailProps {
   mobile: Mobile;
@@ -97,6 +98,10 @@ const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
 
         <div className="mt-16">
           <MobileSpecs mobile={mobile} />
+        </div>
+
+        <div className="mt-16">
+          <MobileSimilarItems mobiles={mobile.similarProducts} />
         </div>
       </div>
     </>
