@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import MobileItem from "./mobile-item";
-import { mobilesMock } from "@/modules/mobiles/infrastructure/__mocks__/mobiles-fixtures";
+import { mobileListItemMock } from "@/modules/mobiles/infrastructure/__mocks__/mobiles-fixtures";
 
 describe("MobileItem", () => {
   it("should render a mobile item", () => {
-    const mobile = mobilesMock[0];
+    const mobile = mobileListItemMock[0];
 
     render(<MobileItem mobile={mobile} />);
 

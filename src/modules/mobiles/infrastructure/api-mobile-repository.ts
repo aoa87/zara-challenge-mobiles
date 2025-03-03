@@ -1,8 +1,8 @@
 import { fetchApi } from "@/modules/shared/infrastructure/fetch-api";
+import { QueryParam } from "@/modules/shared/domain/query-param";
 import { Mobile } from "../domain/mobile";
 import { MobileListItem } from "../domain/mobile-list-item";
 import { MobileRepository } from "../domain/mobile-repository";
-import { QueryParam } from "@/modules/shared/domain/query-param";
 
 export class ApiMobileRepository implements MobileRepository {
   async findAll(search?: string): Promise<MobileListItem[]> {
@@ -14,8 +14,7 @@ export class ApiMobileRepository implements MobileRepository {
     return await fetchApi<MobileListItem[]>("products", { queryParams });
   }
 
-  async findById(id: Mobile["id"]): Promise<Mobile | null> {
-    const response = await fetch(`/api/mobiles/${id}`);
-    return response.json();
+  async findById(id: Mobile["id"]): Promise<Mobile> {
+    return await fetchApi<Mobile>(`products/${id}`);
   }
 }

@@ -1,3 +1,5 @@
+import { ExternalServerError } from "../domain/external-server-error";
+import { NotFoundError } from "../domain/not-found-error";
 import { QueryParam } from "../domain/query-param";
 import { UnauthorizedError } from "../domain/unauthorized-error";
 
@@ -25,6 +27,14 @@ export async function fetchApi<T>(
 
   if (response.status === 401) {
     throw new UnauthorizedError("Invalid API key");
+  }
+
+  if (response.status === 404) {
+    throw new NotFoundError("Not found");
+  }
+
+  if (response.status !== 200) {
+    throw new ExternalServerError("Failed to fetch data");
   }
 
   return response.json();

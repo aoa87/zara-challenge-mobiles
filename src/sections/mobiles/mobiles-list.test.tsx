@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 
 import MobilesList from "./mobiles-list";
-import { mobilesMock } from "@/modules/mobiles/infrastructure/__mocks__/mobiles-fixtures";
+import { mobileListItemMock } from "@/modules/mobiles/infrastructure/__mocks__/mobiles-fixtures";
 
 describe("MobileList", () => {
   it("should render a list of mobiles", () => {
-    render(<MobilesList mobiles={mobilesMock} />);
+    render(<MobilesList mobiles={mobileListItemMock} />);
 
-    mobilesMock.forEach((mobile) => {
+    mobileListItemMock.forEach((mobile) => {
       expect(screen.getByText(mobile.name)).toBeInTheDocument();
     });
   });
