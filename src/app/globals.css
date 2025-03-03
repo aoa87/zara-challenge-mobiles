@@ -1,24 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-
   --primary-text: #000000;
   --secondary-text: #79736d;
   --secondary-size: 10px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   color: var(--primary-text);
-  background: var(--background);
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -37,5 +26,5 @@ body {
 }
 
 .loading-bar {
-  animation: loading 3s linear forwards;
+  animation: loading 2s linear forwards;
 }

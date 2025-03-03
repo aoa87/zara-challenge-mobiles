@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className="flex flex-col h-screen px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32">
         <CartProvider>
           <MainHeader />
-          <main className="flex-grow mt-20 lg:mt-30">{children}</main>
+          <main className="mt-20">{children}</main>
         </CartProvider>
       </body>
     </html>

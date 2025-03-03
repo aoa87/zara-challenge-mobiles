@@ -22,7 +22,6 @@ const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({ item, onRemove }) =
         <div className="uppercase">{item.name}</div>
         <div>{item.description}</div>
         <div className="mt-6">{item.price} EUR</div>
-        <div className="flex-grow"></div>
         <button
           className="text-[#DF0000] text-left cursor-pointer"
           onClick={() => onRemove(item.id)}

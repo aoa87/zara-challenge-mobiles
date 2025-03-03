@@ -33,8 +33,10 @@ const MobilesPage = async (props: { searchParams: SearchParams }) => {
 
   return (
     <Suspense fallback={<LoadingBar />}>
-      <SearchBox initialSearch={search} placeholder="Search for a smartphone..." />
-      <LoadMobilesPage search={search} />
+      <div className="lg:mt-10">
+        <SearchBox initialSearch={search} placeholder="Search for a smartphone..." />
+        <LoadMobilesPage search={search} />
+      </div>
     </Suspense>
   );
 };
