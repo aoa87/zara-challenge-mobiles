@@ -3,6 +3,7 @@
 import useCart from "@/shared/useCart";
 import ShoppingCartItem from "./shopping-cart-item";
 import { useRouter } from "next/navigation";
+import { useCallback } from "react";
 
 const Total = ({ totalAmount }: { totalAmount: number }) => {
   return (
@@ -36,17 +37,26 @@ const PayButton = () => {
 };
 
 const ShoppingCartList = () => {
-  const { state } = useCart();
+  const { state, removeItem } = useCart();
   const { items } = state;
   const itemCount = state.items.reduce((total, item) => total + item.quantity, 0);
   const totalAmount = state.items.reduce((total, item) => total + item.price * item.quantity, 0);
 
+  const handleRemoveItem = useCallback(
+    (itemId: string) => {
+      removeItem(itemId);
+    },
+    [removeItem],
+  );
+
   return (
-    <div className="mb-8">
+    <div className="flex flex-col min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-160px)] mb-4">
       <div className="text-xl mb-8">CART ({itemCount})</div>
-      {items.map((item) => (
-        <ShoppingCartItem key={item.id} item={item} />
-      ))}
+      <div className="grow">
+        {items.map((item) => (
+          <ShoppingCartItem key={item.id} item={item} onRemove={handleRemoveItem} />
+        ))}
+      </div>
 
       <div className="flex flex-col md:flex-row">
         <div className="md:hidden mb-6">

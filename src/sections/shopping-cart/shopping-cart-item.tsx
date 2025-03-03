@@ -3,9 +3,10 @@ import Image from "next/image";
 
 interface ShoppingCartItemProps {
   item: CartItem;
+  onRemove: (itemId: string) => void;
 }
 
-const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({ item }) => {
+const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({ item, onRemove }) => {
   return (
     <div className="flex flex-row items-start gap-4 mb-8">
       <div className="w-[200px] md:w-[260px] h-[200px] md:h-[320px] shrink-0">
@@ -22,7 +23,12 @@ const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({ item }) => {
         <div>{item.description}</div>
         <div className="mt-6">{item.price} EUR</div>
         <div className="flex-grow"></div>
-        <button className="text-[#DF0000] text-left">Remove</button>
+        <button
+          className="text-[#DF0000] text-left cursor-pointer"
+          onClick={() => onRemove(item.id)}
+        >
+          Remove
+        </button>
       </div>
     </div>
   );
