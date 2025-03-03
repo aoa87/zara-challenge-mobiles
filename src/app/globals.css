@@ -26,3 +26,16 @@ body {
   font-size: var(--secondary-size);
   color: var(--secondary-text);
 }
+
+@keyframes loading {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.loading-bar {
+  animation: loading 3s linear forwards;
+}

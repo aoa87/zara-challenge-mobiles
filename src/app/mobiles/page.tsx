@@ -6,6 +6,7 @@ import { ApiMobileRepository } from "@/modules/mobiles/infrastructure/api-mobile
 import MobilesList from "@/sections/mobiles/mobiles-list";
 import SearchBox from "@/components/search-box/search-box";
 import { SearchParams } from "@/shared/types";
+import LoadingBar from "@/components/loading-bar/loading-bar";
 
 interface LoadMobilesPageProps {
   search: string;
@@ -31,7 +32,7 @@ const MobilesPage = async (props: { searchParams: SearchParams }) => {
   const search = searchParams.search ?? "";
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingBar />}>
       <SearchBox initialSearch={search} placeholder="Search for a smartphone..." />
       <LoadMobilesPage search={search} />
     </Suspense>

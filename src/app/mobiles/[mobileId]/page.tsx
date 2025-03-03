@@ -5,6 +5,7 @@ import { ApiMobileRepository } from "@/modules/mobiles/infrastructure/api-mobile
 import { FindByIdMobileUseCase } from "@/modules/mobiles/application/find-by-id-mobile-use-case";
 import { notFound } from "next/navigation";
 import MobileDetail from "@/sections/mobiles/mobile-detail";
+import LoadingBar from "@/components/loading-bar/loading-bar";
 
 interface LoadMobileDetailPageProps {
   mobileId: Mobile["id"];
@@ -32,7 +33,7 @@ const MobileDetailPage: React.FC<MobileDetailPageProps> = async ({ params }) => 
   const { mobileId } = await params;
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingBar />}>
       <LoadMobileDetailPage mobileId={mobileId} />
     </Suspense>
   );
