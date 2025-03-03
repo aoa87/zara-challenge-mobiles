@@ -18,8 +18,12 @@ interface MobileDetailProps {
 }
 
 const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
-  const [selectedStorage, setSelectedStorage] = useState<MobileStorage | undefined>(undefined);
-  const [selectedColor, setSelectedColor] = useState<MobileColor | undefined>(undefined);
+  const [selectedStorage, setSelectedStorage] = useState<MobileStorage | undefined>(
+    mobile.storageOptions.length === 1 ? mobile.storageOptions[0] : undefined,
+  );
+  const [selectedColor, setSelectedColor] = useState<MobileColor | undefined>(
+    mobile.colorOptions.length === 1 ? mobile.colorOptions[0] : undefined,
+  );
   const { addItem } = useCart();
 
   const handleSelectedOption = useCallback((storageOption: MobileStorage) => {

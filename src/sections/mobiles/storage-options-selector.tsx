@@ -17,8 +17,12 @@ const StorageOptionsSelector: React.FC<StorageOptionsSelectorsProps> = React.mem
         {storageOptions.map((storageOption, index) => (
           <div
             key={index}
-            className={`w-[89px] xl:w-[95px] p-4 border-[0.5px] text-center cursor-pointer 
-              ${selectedOption === storageOption ? "border-black" : "border-gray-300"}`}
+            className={`w-[89px] xl:w-[95px] p-4 text-center cursor-pointer 
+              ${
+                selectedOption === storageOption
+                  ? "border-black border-[1px]"
+                  : "border-gray-300 border-[0.5px]"
+              }`}
             onClick={() => onSelect(storageOption)}
           >
             {storageOption.capacity}
