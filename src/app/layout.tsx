@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
+
 import MainHeader from "@/components/main-header/main-header";
+import CartProvider from "@/shared/cart-provider";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ZARA Challenge",
@@ -15,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col h-screen px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32">
-        <MainHeader />
-        <main className="flex-grow mt-20">{children}</main>
+        <CartProvider>
+          <MainHeader />
+          <main className="flex-grow mt-20">{children}</main>
+        </CartProvider>
       </body>
     </html>
   );

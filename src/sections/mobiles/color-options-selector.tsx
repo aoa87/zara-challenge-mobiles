@@ -24,10 +24,7 @@ const ColorOptionsSelector: React.FC<ColorOptionsSelectorProps> = React.memo(
               className="relative w-6 h-6 cursor-pointer"
               style={{ backgroundColor: colorOption.hexCode }}
               onClick={() => onSelect(colorOption)}
-              onMouseEnter={() => {
-                console.log("hovered", colorOption);
-                setIsHovered(colorOption);
-              }}
+              onMouseEnter={() => setIsHovered(colorOption)}
               onMouseLeave={() => setIsHovered(null)}
             >
               <div

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Image from "next/image";
 
 import { Mobile } from "@/modules/mobiles/domain/mobile";
@@ -9,6 +9,7 @@ import StorageOptionsSelector from "./storage-options-selector";
 import ColorOptionsSelector from "./color-options-selector";
 import { MobileColor } from "@/modules/mobiles/domain/mobile-color";
 import MobileSpecs from "./mobile-specs";
+import useCart from "@/shared/useCart";
 
 interface MobileDetailProps {
   mobile: Mobile;
@@ -17,14 +18,28 @@ interface MobileDetailProps {
 const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
   const [selectedStorage, setSelectedStorage] = useState<MobileStorage | undefined>(undefined);
   const [selectedColor, setSelectedColor] = useState<MobileColor | undefined>(undefined);
+  const { addItem } = useCart();
 
-  const handleSelectedOption = (storageOption: MobileStorage) => {
+  const handleSelectedOption = useCallback((storageOption: MobileStorage) => {
     setSelectedStorage(storageOption);
-  };
+  }, []);
 
-  const handleSelectedColor = (color: MobileColor) => {
+  const handleSelectedColor = useCallback((color: MobileColor) => {
     setSelectedColor(color);
-  };
+  }, []);
+
+  const addToCart = useCallback(() => {
+    if (!selectedStorage || !selectedColor) return;
+
+    addItem({
+      id: mobile.id,
+      name: mobile.name,
+      description: `${selectedStorage.capacity} | ${selectedColor.name}`.toUpperCase(),
+      imageUrl: selectedColor.imageUrl,
+      price: selectedStorage.price,
+      quantity: 1,
+    });
+  }, [addItem, selectedStorage, selectedColor, mobile]);
 
   return (
     <div className="mb-4 lg:px-40">
@@ -66,10 +81,11 @@ const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
 
           <button
             className="w-full md:w-[260px] lg:w-[380px] mt-8 h-12 text-xs bg-black text-white text-center py-2 px-4 
-        disabled:bg-[#F3F2F2] disabled:text-[#C2BFBC] disabled::cursor-not-allowed"
+        disabled:bg-[#F3F2F2] cursor-pointer disabled:text-[#C2BFBC] disabled:cursor-not-allowed"
             disabled={!selectedStorage || !selectedColor}
+            onClick={() => addToCart()}
           >
-            AÑADIR
+            ADD TO CART
           </button>
         </div>
       </div>
