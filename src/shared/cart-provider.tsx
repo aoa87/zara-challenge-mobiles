@@ -74,6 +74,7 @@ export const CartContext = createContext<{
 } | null>(null);
 
 const CartProvider = ({ children }: { children: React.ReactNode }) => {
+  "use client";
   const [state, dispatch] = useReducer(cartReducer, initialState, loadCartFromStorage);
 
   useEffect(() => {
