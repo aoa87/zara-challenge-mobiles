@@ -9,9 +9,11 @@ import { MobileStorage } from "@/modules/mobiles/domain/mobile-storage";
 import StorageOptionsSelector from "./storage-options-selector";
 import ColorOptionsSelector from "./color-options-selector";
 import { MobileColor } from "@/modules/mobiles/domain/mobile-color";
-import MobileSpecs from "./mobile-specs";
 import useCart from "@/shared/useCart";
+import { MobileUniqueIdCreator } from "@/modules/mobiles/domain/mobile-unique-id-creator";
+
 import MobileSimilarItems from "./mobile-similar-items";
+import MobileSpecs from "./mobile-specs";
 
 interface MobileDetailProps {
   mobile: Mobile;
@@ -38,7 +40,7 @@ const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
     if (!selectedStorage || !selectedColor) return;
 
     addOneItem({
-      id: mobile.id,
+      id: MobileUniqueIdCreator.createUniqueId(mobile, selectedStorage, selectedColor),
       name: mobile.name,
       description: `${selectedStorage.capacity} | ${selectedColor.name}`.toUpperCase(),
       imageUrl: selectedColor.imageUrl,

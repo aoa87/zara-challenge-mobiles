@@ -24,7 +24,7 @@ const ContinueShoppingButton = () => {
 
   return (
     <button
-      className="py-4 bg-white text-xs w-full md:max-w-[200px] lg:max-w-[260px] border-[0.5px]"
+      className="py-4 bg-white text-xs w-full md:max-w-[200px] lg:max-w-[260px] border-[0.5px] cursor-pointer"
       onClick={handleClick}
     >
       CONTINUE SHOPPING
