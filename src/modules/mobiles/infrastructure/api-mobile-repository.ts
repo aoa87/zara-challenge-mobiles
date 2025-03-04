@@ -6,7 +6,10 @@ import { MobileRepository } from "../domain/mobile-repository";
 
 export class ApiMobileRepository implements MobileRepository {
   async findAll(search?: string): Promise<MobileListItem[]> {
-    const queryParams: QueryParam = {};
+    const queryParams: QueryParam = {
+      limit: 20,
+    };
+
     if (search) {
       queryParams.search = search;
     }

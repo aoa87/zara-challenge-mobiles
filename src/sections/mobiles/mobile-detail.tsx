@@ -52,7 +52,7 @@ const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
       <Link href="/mobiles" className="text-xs mb-4">
         {"< BACK"}
       </Link>
-      <div className="mb-4 lg:px-40">
+      <div data-testid="mobile-detail" className="mb-4 lg:px-40">
         <div className="flex flex-col md:flex-row lg:justify-between">
           <div className="relative">
             <Image
@@ -66,7 +66,9 @@ const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
           </div>
 
           <div>
-            <div className="uppercase text-[20px]">{mobile.name}</div>
+            <div data-testid="mobile-detail__name" className="uppercase text-[20px]">
+              {mobile.name}
+            </div>
             <div className="text-sm">
               {selectedStorage ? selectedStorage.price : mobile.basePrice}
             </div>
