@@ -24,7 +24,7 @@ const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
   const [selectedColor, setSelectedColor] = useState<MobileColor | undefined>(
     mobile.colorOptions.length === 1 ? mobile.colorOptions[0] : undefined,
   );
-  const { addItem } = useCart();
+  const { addOneItem } = useCart();
 
   const handleSelectedOption = useCallback((storageOption: MobileStorage) => {
     setSelectedStorage(storageOption);
@@ -37,7 +37,7 @@ const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
   const addToCart = useCallback(() => {
     if (!selectedStorage || !selectedColor) return;
 
-    addItem({
+    addOneItem({
       id: mobile.id,
       name: mobile.name,
       description: `${selectedStorage.capacity} | ${selectedColor.name}`.toUpperCase(),
@@ -45,7 +45,7 @@ const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
       price: selectedStorage.price,
       quantity: 1,
     });
-  }, [addItem, selectedStorage, selectedColor, mobile]);
+  }, [addOneItem, selectedStorage, selectedColor, mobile]);
 
   return (
     <>

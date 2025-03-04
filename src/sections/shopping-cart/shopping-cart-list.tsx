@@ -51,7 +51,7 @@ const ShoppingCartList = () => {
 
   return (
     <div className="flex flex-col min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-160px)] mb-4">
-      <div className="text-xl mb-8">CART ({itemCount})</div>
+      <div className="text-xl mb-4">CART ({itemCount})</div>
       <div className="grow">
         {items.map((item) => (
           <ShoppingCartItem key={item.id} item={item} onRemove={handleRemoveItem} />
