@@ -53,7 +53,7 @@ const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
         {"< BACK"}
       </Link>
       <div data-testid="mobile-detail" className="mb-4 lg:px-40">
-        <div className="flex flex-col md:flex-row lg:justify-between">
+        <div className="flex flex-col md:flex-row lg:gap-8 lg:justify-center">
           <div className="relative">
             <Image
               className="w-[300] h-[300] md:w-[400px] md:h-[400px]
@@ -65,7 +65,7 @@ const MobileDetail: React.FC<MobileDetailProps> = ({ mobile }) => {
             />
           </div>
 
-          <div>
+          <div className="lg:py-16">
             <div data-testid="mobile-detail__name" className="uppercase text-[20px]">
               {mobile.name}
             </div>
